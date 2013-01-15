@@ -4,29 +4,43 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <title>Table</title>
-<div id = form>
+<div id=header>
 <h1>Building Table</h1>
-
+</div>
 <form>
-
 Style: <input type="radio" name="style" value="circle">circle
        <input type="radio" name="style" value="rectangle">rectangle</br></br>
-
-(if circular top)</br>
-Radius of top:<input type ="text"name="radius"></br></br>
-
-(if rectangular top)</br>
-Length of rectangular top: <input type="text" name="length"></br>
-Breadth of rectangular top: <input type="text" name ="breadth"></br></br>
-
-Thicknes of top: <input type="text" name= "thickness"></br>
-Length of legs:<input type="text" name="leglength"></br>
-Width of legs:<input type ="text" name="legwidth"></br>
-
+<div id= table>
+<table>
+<tr><td><i><font size='2'>If circular top</font></i></td></tr>
+<tr>
+<td>Radius of Top</td>
+<td><input type ="text"name="radius"></td>
+</tr>
+<tr><td><i><font size='2'>If rectangular top</font></i></td></tr>
+<tr>
+<td>Length of top</td>
+<td><input type ="text"name="radius"></td>
+</tr>
+<tr>
+<td>breadth of top</td>
+<td><input type ="text"name="radius"></td>
+</tr>
+<td>Thickness of top</td>
+<td><input type ="text"name="radius"></td>
+</tr>
+<tr>
+<td>Length of legs</td>
+<td><input type ="text"name="radius"></td>
+</tr>
+<tr>
+<td>Width of legs</td>
+<td><input type ="text"name="radius"></td>
+</tr>
+</table>
+</div>
 <input type="reset" value="Reset">
 <input type="submit" value="Submit">
-
 </form>
-</div>
 </body>
 </html>
