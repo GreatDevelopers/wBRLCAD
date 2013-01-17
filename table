@@ -1,6 +1,7 @@
 echo Content-type: text/html
 echo
 
+echo "hello"
 rm -f var
 rm -f script
 rm *.g
