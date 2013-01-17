@@ -1,24 +1,61 @@
+#!/bin/bash
+
 echo Content-type: text/html
 echo
-
-echo "hello"
-rm -f var
-rm -f script
-rm *.g
-touch var
-chmod 777 var
-i = 1
-
-while [ $i -le 6 ]
-do
-echo $QUERY_STRING | cut -d'&' -f$i | cut -d'=' -f2 >> var
-i='expr $i + 1'
-done
-
-./a.out
-echo "</pre>"
-chmod 755 script
-./script
-echo "</br><h3><a href="box.php">Back</a></h3></br>"
-echo "<img src=../../rtFile.png"
 echo "<pre>"
+
+# removing old files.
+rm -f table.g
+rm -f rt*
+rm -f ../../cgi-images/rt*
+
+rt=rtFile
+echo $QUERY_STRING | cut -d'&' -f1 | cut -d'=' -f2 | $xmax 
+echo $QUERY_STRING | cut -d'&' -f2 | cut -d'=' -f2 | $ymax
+echo $QUERY_STRING | cut -d'&' -f3 | cut -d'=' -f2 | $zmax
+echo $QUERY_STRING | cut -d'&' -f4 | cut -d'=' -f2 | $lxmax
+echo $QUERY_STRING | cut -d'&' -f5 | cut -d'=' -f2 | $lymax
+echo $QUERY_STRING | cut -d'&' -f6 | cut -d'=' -f2 | $lzmax
+
+cat <<EOF | env /usr/brlcad/bin/mged -c table.g
+in tableSurface.s rpp 0 $xmax 0 $ymax 0 $zmax
+in leg1.s rpp 0 $lxmax 0 $lymax 0 $zmax
+in leg2.s rpp $xmax-$lxmax $lxmax 0 $lymax 0 $lzmax
+in leg3.s rpp 0 $lxmax $ymax-$lymax $lymax 0 $lzmax
+in leg4.s rpp $xmax-$lxmax $lxmax $ymax-$lymax $ymax 0 $zmax
+r table.r u tableSurface.s u leg1.s u leg2.s u leg3.s u leg4.s
+mater table.r plastic 12 164 220 0
+B table.r
+ae 25 35
+saveview $rt
+EOF
+
+# adding "env /usr/brlcad/bin/" in the beginning of 2nd line of raytracing file
+# and sending output to temporary file.
+sed '2cenv /usr/brlcad/bin/rt -M \\' $rt > tempFile
+
+# removing original raytracing file.
+rm $rt
+
+# changing name of temporary file to that of original file.
+mv tempFile $rt
+
+# give executable permissions to raytrace file.
+chmod 755 $rt
+
+
+# executing raytrace file. This will produce raw image in .pix tormat and a log
+#file.
+./$rt
+
+# converting .pix file to png image using BRLCAD commands.
+env /usr/brlcad/bin/pix-png < $rt.pix > $rt.png
+# open png image in a frame buffer. Currently not required.
+#env /usr/brlcad/bin/png-fb $rt.png
+
+# copying final image to public_html for displaying on browser.
+cp $rt.png ../../cgi-images/
+
+# using html <img src tag, display image on browser.
+echo "<img src=../../cgi-images/$rt.png"
+echo "</pre>"
