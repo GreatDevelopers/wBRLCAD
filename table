@@ -10,13 +10,13 @@ rm -f rt*
 rm -f ../../cgi-images/rt*
 
 rt=rtFile
-echo $QUERY_STRING | cut -d'&' -f1 | cut -d'=' -f2 | $xmax 
-echo $QUERY_STRING | cut -d'&' -f2 | cut -d'=' -f2 | $ymax
-echo $QUERY_STRING | cut -d'&' -f3 | cut -d'=' -f2 | $zmax
-echo $QUERY_STRING | cut -d'&' -f4 | cut -d'=' -f2 | $lxmax
-echo $QUERY_STRING | cut -d'&' -f5 | cut -d'=' -f2 | $lymax
-echo $QUERY_STRING | cut -d'&' -f6 | cut -d'=' -f2 | $lzmax
-
+xmax=`echo "$QUERY_STRING" | cut -d"&" -f1 | cut -d"=" -f2`
+ymax=`echo "$QUERY_STRING" | cut -d"&" -f2 | cut -d"=" -f2`
+zmax=`echo "$QUERY_STRING" | cut -d"&" -f3 | cut -d"=" -f2`
+lxmax=`echo "$QUERY_STRING" | cut -d"&" -f4 | cut -d"=" -f2`
+lymax=`echo "$QUERY_STRING" | cut -d"&" -f5 | cut -d"=" -f2`
+lzmax=`echo "$QUERY_STRING" | cut -d"&" -f6 | cut -d"=" -f2`
+echo "Your Table is:"
 cat <<EOF | env /usr/brlcad/bin/mged -c table.g
 in tableSurface.s rpp 0 $xmax 0 $ymax 0 $zmax
 in leg1.s rpp 0 $lxmax 0 $lymax 0 $zmax
