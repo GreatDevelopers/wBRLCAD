@@ -18,10 +18,11 @@ lymax=`echo "$QUERY_STRING" | cut -d"&" -f5 | cut -d"=" -f2`
 lzmax=`echo "$QUERY_STRING" | cut -d"&" -f6 | cut -d"=" -f2`
 lxmin=`expr $xmax - $lxmax`
 lymin=`expr $ymax + $lymax`
+echo $lxmin
 echo "Your Table is:"
 cat <<EOF | env /usr/brlcad/bin/mged -c table.g
 in tableSurface.s rpp 0 $xmax 0 $ymax $zmax 0
-in leg1.s rpp 0 $lxmax 0 $lymax $zmax 0
+in leg1.s rpp 0 $lxmax 0 $lymax $lzmax 0
 in leg2.s rpp $lxmin $lxmax 0 $lymax $lzmax 0
 in leg3.s rpp 0 $lxmax $lymin $lymax $lzmax 0
 in leg4.s rpp $xmin $lxmax $lymin $ymax $zmax 0
