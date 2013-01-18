@@ -30,12 +30,12 @@ lymin=`expr $ymax - $lymax`
 tzmax=`expr $zmax + $lzmax`
 
 echo "Your Table is:"
-
+echo $lxmin $xmax $lymin $lzmax
 #mged commands
 cat <<EOF | env /usr/brlcad/bin/mged -c table.g
 in tableSurface.s rpp 0 $xmax 0 $ymax $lzmax $tzmax
 in leg1.s rpp 0 $lxmax 0 $lymax 0 $lzmax
-#in leg2.s rpp $lxmin $xmax 0 $lymin 0 $lzmax
+in leg2.s rpp $lxmin $xmax 0 $lymax 0 $lzmax
 in leg3.s rpp 0 $lxmax $lymin $ymax 0 $lzmax
 in leg4.s rpp $lxmin $xmax $lymin $ymax 0 $lzmax
 r table.r u tableSurface.s u leg1.s u leg2.s u leg3.s u leg4.s
