@@ -48,10 +48,7 @@ EOF
 # adding "env /usr/brlcad/bin/" in the beginning of 2nd line of raytracing file
 # and sending output to temporary file.
 sed '2cenv /usr/brlcad/bin/rt -M \\' $rt > tempFile
-sed '2cenv /usr/brlcad/bin/rtf -M \\' $rt > tempFile
-sed '2cenv /usr/brlcad/bin/rtl -M \\' $rt > tempFile
-sed '2cenv /usr/brlcad/bin/rtt -M \\' $rt > tempFile
-sed '2cenv /usr/brlcad/bin/rtb -M \\' $rt > tempFile
+
 # removing original raytracing file.
 rm $rt
 
