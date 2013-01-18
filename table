@@ -41,39 +41,59 @@ in leg4.s rpp $lxmin $xmax $lymin $ymax 0 $lzmax
 r table.r u tableSurface.s u leg1.s u leg2.s u leg3.s u leg4.s
 mater table.r plastic 12 164 220 0
 B table.r
-ae 25 35
-saveview $rt
+ae 0 0
+saveview $front
+ae 270 0
+saveview $side
+ae -90 90 
+saveview $top
+ae 30 30
+saveview $iso
 EOF
 
 # adding "env /usr/brlcad/bin/" in the beginning of 2nd line of raytracing file
 # and sending output to temporary file.
-sed '2cenv /usr/brlcad/bin/rt -M \\' $rt > tempFile
+sed '2cenv /usr/brlcad/bin/rt -M \\' $front > tempFile1
+sed '2cenv /usr/brlcad/bin/rt -M \\' $side > tempFile2
+sed '2cenv /usr/brlcad/bin/rt -M \\' $top > tempFile3
+sed '2cenv /usr/brlcad/bin/rt -M \\' $iso > tempFile4
 
 # removing original raytracing file.
-rm $rt
+rm $front
+rm $side
+rm $top
+rm $iso
 
 # changing name of temporary file to that of original file.
-mv tempFile $rt
+mv tempFile $front
+mv tempfile2 $side
+mv tempfile3 $top
+mv tempfile4 $iso
 
 # give executable permissions to raytrace file.
-chmod 755 $rt
+chmod 755 $front
+chmod 755 $side
+chmod 755 $top
+chmod 755 $iso
 
 # executing raytrace file. This will produce raw image in .pix tormat and a log
 #file.
-./$rt
+./$front
+./$side
+./$top
+./$iso
 
 # converting .pix file to png image using BRLCAD commands.
-env /usr/brlcad/bin/pix-png < $rt.pix > $rt.png
+env /usr/brlcad/bin/pix-png < $front.pix > $front.png
+env /usr/brlcad/bin/pix-png < $side.pix > $side.png
+env /usr/brlcad/bin/pix-png < $top.pix > $top.png
+env /usr/brlcad/bin/pix-png < $iso.pix > $iso.png
 
 # open png image in a frame buffer. Currently not required.
 #env /usr/brlcad/bin/png-fb $rt.png
 
 # copying final image to public_html for displaying on browser.
-cp $rt.png ../../cgi-images/
-
-# using html <img src tag, display image on browser.
-echo "<img src=../../cgi-images/$rt.png"
-
-
-echo "</pre>"
-echo "</br><h3><a href="http://cad.devplace.in/form.html">Lets make another table</a></h3></br>"
+cp $front.png ../../cgi-images/
+cp $side.png ../../cgi-images/
+cp $top.png ../../cgi-images/
+cp $iso.png ../../cgi-images/
