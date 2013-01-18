@@ -10,16 +10,28 @@ rm -f rt*
 rm -f ../../cgi-images/rt*
 
 rt=rtFile
+#initialising variable for the values filled in the form
+#length of the top
 xmax=`echo "$QUERY_STRING" | cut -d"&" -f1 | cut -d"=" -f2`
+#Breadth of the top
 ymax=`echo "$QUERY_STRING" | cut -d"&" -f2 | cut -d"=" -f2`
+#thickness of the top
 zmax=`echo "$QUERY_STRING" | cut -d"&" -f3 | cut -d"=" -f2`
+#length of leg
 lxmax=`echo "$QUERY_STRING" | cut -d"&" -f4 | cut -d"=" -f2`
+#width of leg
 lymax=`echo "$QUERY_STRING" | cut -d"&" -f5 | cut -d"=" -f2`
+#height of leg
 lzmax=`echo "$QUERY_STRING" | cut -d"&" -f6 | cut -d"=" -f2`
+#subtracting to get the x min and ymin of leg
 lxmin=`expr $xmax - $lxmax`
 lymin=`expr $ymax - $lymax`
+#Making the table to be at tehtop of legs
 tzmax=`expr $zmax + $lzmax`
+
 echo "Your Table is:"
+
+#mged commands
 cat <<EOF | env /usr/brlcad/bin/mged -c table.g
 in tableSurface.s rpp 0 $xmax 0 $ymax $lzmax $tzmax
 in leg1.s rpp 0 $lxmax 0 $lymax 0 $lzmax
