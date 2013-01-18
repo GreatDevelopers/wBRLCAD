@@ -45,6 +45,21 @@ ae 25 35
 saveview $rt
 EOF
 
+cat <<EOF | env /usr/brlcad/bin/mged -c table.g
+in tableSurface.s rpp 0 $xmax 0 $ymax 0 $tzmax
+in leg1.s rpp 0 $lxmax 0 $lymax -$lzmax 0
+in leg2.s rpp xmax-lxmax $lxmax 0 $lymax -$lzmax 0 
+in leg3.s rpp 0 $lxmax $ymax-lymax $ymax -$lzmax 0
+in leg4.s rpp xmax-lxmax $lxmax $ymax-lymax $lymax -$lzmax 0
+r table.r u tableSurface.s u leg1.s u leg2.s u leg3.s u leg4.s
+mater table.r plastic 12 164 220 0
+B table.r
+ae 25 35
+saveview $rt
+EOF
+
+
+
 # adding "env /usr/brlcad/bin/" in the beginning of 2nd line of raytracing file
 # and sending output to temporary file.
 sed '2cenv /usr/brlcad/bin/rt -M \\' $rt > tempFile
