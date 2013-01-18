@@ -97,3 +97,5 @@ cp $front.png ../../cgi-images/
 cp $side.png ../../cgi-images/
 cp $top.png ../../cgi-images/
 cp $iso.png ../../cgi-images/
+
+echo "<a href=\"../../completed.html\">Congo! you made a table with different views check em here </a>"
