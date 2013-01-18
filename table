@@ -30,7 +30,7 @@ lymin=`expr $ymax - $lymax`
 tzmax=`expr $zmax + $lzmax`
 
 echo "Your Table is:"
-echo $lxmin $xmax $lymin $lzmax
+
 #mged commands
 cat <<EOF | env /usr/brlcad/bin/mged -c table.g
 in tableSurface.s rpp 0 $xmax 0 $ymax $lzmax $tzmax
@@ -77,3 +77,4 @@ cp $rt.png ../../cgi-images/
 # using html <img src tag, display image on browser.
 echo "<img src=../../cgi-images/$rt.png"
 echo "</pre>"
+echo "</br><h3><a href="http://cad.devplace.in/form.html">Lets make another table</a></h3></br>"
