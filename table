@@ -43,14 +43,6 @@ mater table.r plastic 12 164 220 0
 B table.r
 ae 25 35
 saveview $rt
-front
-saveview $rtf
-left
-saveview $rtl
-top
-saveview $rtt
-bottom
-saveview $rtb
 EOF
 
 # adding "env /usr/brlcad/bin/" in the beginning of 2nd line of raytracing file
@@ -61,54 +53,30 @@ sed '2cenv /usr/brlcad/bin/rtl -M \\' $rt > tempFile
 sed '2cenv /usr/brlcad/bin/rtt -M \\' $rt > tempFile
 sed '2cenv /usr/brlcad/bin/rtb -M \\' $rt > tempFile
 # removing original raytracing file.
-rm $rt $rtf $rtl $rtt $rtb 
+rm $rt
 
 # changing name of temporary file to that of original file.
 mv tempFile $rt
-mv tempfile $rtf
-mv tempfile $rtl
-mv tempfile $rtt
-mv tempfile $rtb
+
 # give executable permissions to raytrace file.
 chmod 755 $rt
-chmod 755 $rtf
-chmod 755 $rtl
-chmod 755 $rtt
-chmod 755 $rtb
 
 # executing raytrace file. This will produce raw image in .pix tormat and a log
 #file.
 ./$rt
-./$rtf
-./$rtl
-./$rtt
-./$rtb
+
 # converting .pix file to png image using BRLCAD commands.
 env /usr/brlcad/bin/pix-png < $rt.pix > $rt.png
-env /usr/brlcad/bin/pix-png < $rtf.pix > $rtf.png
-env /usr/brlcad/bin/pix-png < $rtl.pix > $rtl.png
-env /usr/brlcad/bin/pix-png < $rtt.pix > $rtt.png
-env /usr/brlcad/bin/pix-png < $rtb.pix > $rtb.png
+
 # open png image in a frame buffer. Currently not required.
 #env /usr/brlcad/bin/png-fb $rt.png
-#env /usr/brlcad/bin/png-fb $rtf.png
-#env /usr/brlcad/bin/png-fb $rtl.png
-#env /usr/brlcad/bin/png-fb $rtt.png
-#env /usr/brlcad/bin/png-fb $rtb.png
 
 # copying final image to public_html for displaying on browser.
 cp $rt.png ../../cgi-images/
-cp $rtf.png ../../cgi-images/
-cp $rtl.png ../../cgi-images/
-cp $rtt.png ../../cgi-images/
-cp $rtb.png ../../cgi-images/
 
 # using html <img src tag, display image on browser.
 echo "<img src=../../cgi-images/$rt.png"
-echo "<img src=../../cgi-images/$rtf.png"
-echo "<img src=../../cgi-images/$rtl.png"
-echo "<img src=../../cgi-images/$rtt.png"
-echo "<img src=../../cgi-images/$rtb.png"
+
 
 echo "</pre>"
 echo "</br><h3><a href="http://cad.devplace.in/form.html">Lets make another table</a></h3></br>"
