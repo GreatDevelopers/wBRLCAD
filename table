@@ -7,7 +7,8 @@ echo "<pre>"
 # removing old files.
 rm -f table.g
 rm -f rt*
-rm -f ../../cgi-images/rt*
+rm -f temp*
+rm -f ../../cgi-images/*.png
 
 rt=rtFile
 #initialising variable for the values filled in the form
@@ -30,6 +31,11 @@ lymin=`expr $ymax - $lymax`
 tzmax=`expr $zmax + $lzmax`
 
 echo "Your Table is:"
+#defining various views
+front=frontview
+side=sideview
+top=topview
+iso=isoview
 
 #mged commands
 cat <<EOF | env /usr/brlcad/bin/mged -c table.g
@@ -71,10 +77,10 @@ mv tempfile3 $top
 mv tempfile4 $iso
 
 # give executable permissions to raytrace file.
-chmod 755 $front
-chmod 755 $side
-chmod 755 $top
-chmod 755 $iso
+chmod 777 $front
+chmod 777 $side
+chmod 777 $top
+chmod 777 $iso
 
 # executing raytrace file. This will produce raw image in .pix tormat and a log
 #file.
@@ -89,8 +95,11 @@ env /usr/brlcad/bin/pix-png < $side.pix > $side.png
 env /usr/brlcad/bin/pix-png < $top.pix > $top.png
 env /usr/brlcad/bin/pix-png < $iso.pix > $iso.png
 
-# open png image in a frame buffer. Currently not required.
-#env /usr/brlcad/bin/png-fb $rt.png
+chmod 777 $front.png
+chmod 777 $side.png
+chmod 777 $top.png
+chmod 777 $iso.png
+
 
 # copying final image to public_html for displaying on browser.
 cp $front.png ../../cgi-images/
