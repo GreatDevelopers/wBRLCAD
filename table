@@ -107,5 +107,5 @@ cp $side.png ../../cgi-images/
 cp $top.png ../../cgi-images/
 cp $iso.png ../../cgi-images/
 echo "<meta http-equiv="refresh" content="2;url=http://cad.devplace.in/multi_view.html">"
-#echo "<a href=\"../../multi_view.html\">Congo! you made a table with different views check em here </a>"
+echo "<a href=\"../../multi_view.html\">Congo! you made a table with different views check em here </a>"
 echo "<pre>"
