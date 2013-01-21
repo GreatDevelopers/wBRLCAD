@@ -7,10 +7,10 @@ echo "<pre>"
 # removing old files.
 rm -f table.g
 rm -f rt*
+rm -f *.pix
 rm -f temp*
-rm -f ../../cgi-images/*.png
+rm -f ../../cgi-images/*
 
-rt=rtFile
 #initialising variable for the values filled in the form
 #length of the top
 xmax=`echo "$QUERY_STRING" | cut -d"&" -f1 | cut -d"=" -f2`
@@ -71,10 +71,10 @@ rm $top
 rm $iso
 
 # changing name of temporary file to that of original file.
-mv tempFile $front
-mv tempfile2 $side
-mv tempfile3 $top
-mv tempfile4 $iso
+mv tempFile1 $front
+mv tempFile2 $side
+mv tempFile3 $top
+mv tempFile4 $iso
 
 # give executable permissions to raytrace file.
 chmod 777 $front
