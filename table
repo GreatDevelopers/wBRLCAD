@@ -107,8 +107,8 @@ cp $side.png ../../cgi-images/
 cp $top.png ../../cgi-images/
 cp $iso.png ../../cgi-images/
 echo "<head>"
-echo "<meta http-equiv="refresh" content="2;url=http://cad.devplace.in/multi_view.html">"
+echo "<meta http-equiv="refresh" content="2;url=../../multi_view.html">"
 echo "</head>"
 echo "Processing your Table:"
-#echo "<a href=\"../../multi_view.html\">Congo! you made a table with different views check em here </a>"
+echo "<a href=\"../../multi_view.html\">Congo! you made a table with different views check em here </a>"
 echo "<pre>"
