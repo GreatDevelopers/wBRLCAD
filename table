@@ -108,3 +108,4 @@ cp $top.png ../../cgi-images/
 cp $iso.png ../../cgi-images/
 
 echo "<a href=\"../../multi_view.html\">Congo! you made a table with different views check em here </a>"
+echo "<pre>"
