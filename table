@@ -59,10 +59,10 @@ EOF
 
 # adding "env /usr/brlcad/bin/" in the beginning of 2nd line of raytracing file
 # and sending output to temporary file.
-sed '2cenv /usr/brlcad/bin/rt -C255/255/200 -M \\' $front > tempFile1
-sed '2cenv /usr/brlcad/bin/rt -C255/255/200 -M \\' $side > tempFile2
-sed '2cenv /usr/brlcad/bin/rt -C255/255/200 -M \\' $top > tempFile3
-sed '2cenv /usr/brlcad/bin/rt -C255/255/200 -M \\' $iso > tempFile4
+sed '2cenv /usr/brlcad/bin/rt -M \\' $front > tempFile1
+sed '2cenv /usr/brlcad/bin/rt -M \\' $side > tempFile2
+sed '2cenv /usr/brlcad/bin/rt -M \\' $top > tempFile3
+sed '2cenv /usr/brlcad/bin/rt -M \\' $iso > tempFile4
 
 # removing original raytracing file.
 rm $front
