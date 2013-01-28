@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo Content-type: text/html
 echo
@@ -15,6 +15,7 @@ echo "First the form ask you for the number of field in you form. After this you
 echo "<pre>"
 ./s
 echo "</pre>"
+cp onform.html ../../
 echo "<a href=/"onform.html"/>See your form here</a>"
 
 echo "</body></html>"
