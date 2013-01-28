@@ -1,4 +1,4 @@
-#adding header files
+//adding header files
 #include<stdio.h>
 #include<string.h>
 void main()
@@ -15,7 +15,7 @@ int i,n;
 FILE *f;
 
 //creating file form.html
-f=fopen("form.html","w");
+f=fopen("onform.html","w");
 printf("Enter the title for your html file:");
 scanf("%s", title);
 printf("How many fields you want in your table:");
