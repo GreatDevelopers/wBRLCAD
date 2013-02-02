@@ -29,7 +29,7 @@ scanf("%d",&n);
 
 fprintf(f,"<html><head> \n <title>%s</title>",title);
 fprintf(f,"<link rel=\"stylesheet\" type=\"text/css\" href=\"%s\"> \n </head></body>\n",css);
-fprintf(f,"<header><h1>%s</h1></header>",title)
+fprintf(f,"<header><h1>%s</h1></header>",title);
 fprintf(f,"<table>");
 fprintf(f, "<form action=\"%s\" method=\"GET\">",script);
 
