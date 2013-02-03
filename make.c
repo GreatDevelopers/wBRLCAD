@@ -41,6 +41,7 @@ printf("Enter the type of %s field:",name);
 scanf("%s",type);
 fprintf(f,"<tr> \n <td>%s</td> \n <td><input type=%s name=%s></td></tr>\n",name,type,name);
 }
+fprintf(f,"</table>")
 fprintf(f,"<center><input type=submit value=Submit></center>");
 fprintf(f,"</form></body></html>");
 }
