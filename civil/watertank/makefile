@@ -1,3 +1,9 @@
+###############################################################################
+# This is makefile for watertank sub project under wBRLCAD project.           #
+#                                                                             #
+# Written By: Harmanpreet Singh                                               #
+###############################################################################
+
 # main function file
 mainFunction = mainFunction.cpp
 
@@ -47,7 +53,8 @@ $(mainFunctionObj): $(mainFunction) $(declarations)
 
 # linking object files
 $(main): $(definitionsObj) $(mainFunctionObj) 
-	$(compiler) $(outputRedirectFlag) $(main) $(definitionsObj) $(mainFunctionObj)
+	$(compiler) $(outputRedirectFlag) $(main) $(definitionsObj) \
+	$(mainFunctionObj)
 
 execute: 
 	./$(main) < $(inputFile)
