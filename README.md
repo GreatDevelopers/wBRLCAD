@@ -10,10 +10,13 @@ This project is aimed at extending the capability of BRLCAD from desktop to web 
 Basically, this project has three main branches (other than github branches). These are Civil, Mechanical and General. These three branches contain further independent projects that provide ease of use to end user. 
 
 Currently, Civil branch has following projects:
+
 Watertank
 
 Mechanical branch has following projects:
+
 Gear
 
 and at last, general branch has following projects:
+
 3d model of table
