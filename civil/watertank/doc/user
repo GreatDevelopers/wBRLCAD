@@ -4,14 +4,12 @@ USER DOCUMENTATION
 Prerequisities
 ==============
 Following tools and utilities are need to run water tank project.  
-gcc compiler (version 4.6.3)
+gcc compiler
 Linux
-BRL-CAD (version 7.22.0
-make (version 3.81)
+BRL-CAD
+make
 
-Please note that the versions mentioned in the following are those on which the project is build and tested. 
-May work on different versions also. Please update this document if you know the project also run with different 
-versions of these tools.
+Please check whether the above tools / utilities are installed on your system or not.
 
 Download and Installation
 =========================
@@ -20,4 +18,6 @@ For development version please go to: https://github.com/GreatDevelopers/wBRLCAD
 
 Usage
 =====
-Unzip the folder.
+Unzip the folder. Place it at your prefered location.
+Open the terminal, and type, "make" (without double quotes). Make command will compile the program and shows four
+different views of model in the browser. 
