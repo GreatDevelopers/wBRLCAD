@@ -1,0 +1,10 @@
+col000
+col001
+col002
+topInnerDome
+topOuterDome
+bottomInnerDome
+bottomOuterDome
+plinthColumn
+bottomRingBeamColumn
+stirrup
