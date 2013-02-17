@@ -5,10 +5,10 @@
 ###############################################################################
 
 # main function file
-mainFunction = mainFunction.cpp
+mainFunction = watertank.cpp
 
 # main function object file
-mainFunctionObj = mainFunction.o
+mainFunctionObj = watertank.o
 
 # file containing all definitions of functions and 
 #variables.

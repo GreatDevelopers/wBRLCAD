@@ -32,9 +32,13 @@ cpId = 0;
 
 /** starting of input statements */
 /** taking input of names of master columns in an array */
+
+ifstream iFile;
+/** obkjectNames.txt file contains names of mged objects */
+iFile.open("objectNames.txt");
 for (k = 0; k < columnTypes; k++) {
 string arrayBuffer;
-cin>>arrayBuffer;
+iFile>>arrayBuffer;
 masterColumn.push_back(arrayBuffer);
 cout<<masterColumn[k];
 }
@@ -42,10 +46,11 @@ cout<<masterColumn[k];
 /** taking input of names of mged objects in an array */
 for (k = 0; k < mgedObjectNo; k++) {
 string arrayBuffer;
-cin>>arrayBuffer;
+iFile>>arrayBuffer;
 mgedObjectName.push_back(arrayBuffer);
 cout<<mgedObjectName[k]<<endl;
 }
+iFile.close();
 
 /** taking input for depth of "foundation column" and "plinth" */
 for (k = 0; k <= 1; k++) {
@@ -313,7 +318,7 @@ void waterTank :: braceColumnArrangement() {
 	attachSuffix(i);
 //	oFile<<"sed bottomRingBeamColumn"<<i<<"\n";
 	
-	translate(xCord, yCord, bottomRingBeamColumnPosition);	
+	translate(xCord, yCord, bottomRingBeamPosition - aboveGroundColHeight);	
 //	oFile<<"translate "<<setprecision(3)<<xCord<<" "<<setprecision(3)<<yCord<<" "<<bottomRingBeamPosition - aboveGroundColHeight<<"\n";
 
 	accept();

@@ -195,6 +195,9 @@ int cmdCounter;
 int cpId;
 
 ofstream oFile;
+
+string shellScript;
+
 /** used to create beam rings for different set of values */
 static int id;	
 
@@ -225,6 +228,3 @@ void vectorWriter();
 void attachSuffix(int);
 void accept();
 };
-
-
-
