@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+echo Content-type: text/html
+echo
+
+rm -f ../values 
+rm -f values
+
+touch values
+
+echo `$QUERY_STRING`
+i=1
+while [ $i -le 47 ]
+do
+
+echo $QUERY_STRING | cut -d"&" -f$i | cut -d"=" -f2 >> values
+
+i=$(( $i + 1 ))
+
+done
+
+if [ -f values ]; then
+
+	echo "Inputs have been received successfully.<br><br>" 
+	echo "Size of input file is $(du -h values | awk '{ print $1 }')"
+else
+	 echo "Inputs not received successfully due to some unexpected
+	 error. You can do following to fix the error:<br>
+	 <ol>
+	 <li>You do not have permission to create file.</li>
+	 <li>Check URL paths.</li>
+	 <li>Check manually whether the input file already created on server.</li>
+	 <li>Check log files.</li>
+	 </ol>
+	 Inconvenience regretted."	 
+fi
+

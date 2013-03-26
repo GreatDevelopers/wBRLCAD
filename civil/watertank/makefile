@@ -25,7 +25,7 @@ declarations = declarations.h
 main = watertank
 
 # input file of watertank project
-inputFile = input.txt
+inputFile = inputForm/values
 
 # name of compiler
 compiler = g++
