@@ -218,7 +218,9 @@ void columnReinforcement();
 void coordinatesGenerator();
 void waterTankCrossSection();
 void stirrupCopier(double);
-void sphere(string sphereName, double sphereRadius, double sphereCenterXCord = 0, double sphereCenterYCord = 0, double sphereCenterZCord = 0);
+void sphere(string sphereName, double sphereRadius, 
+	double sphereCenterXCord = 0, double sphereCenterYCord = 0,
+   	double sphereCenterZCord = 0);
 void draw(string);
 void cp(string, string);
 void sed(string);
@@ -227,4 +229,6 @@ void fileWriter(int);
 void vectorWriter();
 void attachSuffix(int);
 void accept();
+void combination();
+void objectNameCollector(string name, double suffix =' ');
 };

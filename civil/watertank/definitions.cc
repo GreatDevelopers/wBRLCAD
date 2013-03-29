@@ -30,39 +30,39 @@ heightVecY = 0;
 
 cpId = 0;
 
-/** starting of input statements */
-/** taking input of names of master columns in an array */
+/** starting of input statements.
+* taking input of names of master columns in an array */
 
 ifstream iFile;
-/** obkjectNames.txt file contains names of mged objects */
+/** objectNames.txt file contains names of mged objects */
 iFile.open("objectNames.txt");
 for (k = 0; k < columnTypes; k++) {
-string arrayBuffer;
-iFile>>arrayBuffer;
-masterColumn.push_back(arrayBuffer);
-cout<<masterColumn[k];
+    string arrayBuffer;
+    iFile>>arrayBuffer;
+    masterColumn.push_back(arrayBuffer);
+//    cout<<masterColumn[k];
 }
 
 /** taking input of names of mged objects in an array */
 for (k = 0; k < mgedObjectNo; k++) {
-string arrayBuffer;
-iFile>>arrayBuffer;
-mgedObjectName.push_back(arrayBuffer);
-cout<<mgedObjectName[k]<<endl;
+    string arrayBuffer;
+    iFile>>arrayBuffer;
+    mgedObjectName.push_back(arrayBuffer);
+//    cout<<mgedObjectName[k]<<endl;
 }
 iFile.close();
 
 /** taking input for depth of "foundation column" and "plinth" */
 for (k = 0; k <= 1; k++) {
     cin>>columnHeight[k];
-    cout<<"height: "<<columnHeight[k]<<endl;
-    }   
+//    cout<<"height: "<<columnHeight[k]<<endl;
+}   
 
 /**  taking input for diameter of column above ground */
 for (k = 2; k <= 2; k++) {
     cin>>columnDiameter[k];
-    cout<<"dia: "<<columnDiameter[k]<<endl;
-    }
+//    cout<<"dia: "<<columnDiameter[k]<<endl;
+}
 
 cin>>foundationDiameter>>colNo;
 cin>>databaseName>>colDiameter;
@@ -250,10 +250,7 @@ void waterTank :: braceColumnArrangement() {
 	/**
 	 * saving names of objects in an array 
 	 */
-	concatenator<<"foundationColumn"<<i;
-	objectName[nameCounter] = concatenator.str();
-	concatenator.str(std :: string());
-	nameCounter++;
+	objectNameCollector("foundationColumn",i);
 	i++;
 }
 	oFile.close(); //temporarily written.
@@ -288,10 +285,7 @@ void waterTank :: braceColumnArrangement() {
 	/**
 	 * saving names of objects in an array 
 	 */
-//	concatenator<<"plinthColumn"<<i;
-//	objectName[nameCounter] = concatenator.str();
-//	concatenator.str(std :: string());
-//	nameCounter++;
+	objectNameCollector("plinthColumn",i);
 	i++;
 	}
 
@@ -327,15 +321,12 @@ void waterTank :: braceColumnArrangement() {
 	/**
 	 * saving names of objects in an array 
 	 */
-//	concatenator<<"bottomRingBeamColumn"<<i;
-//	objectName[nameCounter] = concatenator.str();
-//	concatenator.str(std :: string());
-//	nameCounter++;
+    objectNameCollector("bottomRingBeamColumn",i);
 	i++;
 }
-	cout<<"after bottomRing"<<cmdCounter<<endl;
+//	cout<<"after bottomRing"<<cmdCounter<<endl;
 	fileWriter(cmdCounter);
-	cout<<"after file writing"<<cmdCounter<<endl;
+//	cout<<"after file writing"<<cmdCounter<<endl;
 
 
 //        rotationAngle = rotationAngle + angleStepDeg;
@@ -358,25 +349,22 @@ while (braceCounter < braceNumber) {
 //        yCord = foundationDiameter / 2 * cos(angleRad);
 
 	/* setting the output of floating numbers from scientific to normal form */
-//        cout.setf(ios :: fixed);
-//        oFile.setf(ios :: fixed);
+        cout.setf(ios :: fixed);
+        oFile.setf(ios :: fixed);
 
 //	cout<<"columnPosition: "<<columnPosition<<endl;
 //	cout<<"braceCounter: "<<braceCounter<<endl;
  
-	oFile<<"\ncp braceColumnCombination.c braceColumnCombination.c"<<braceCounter<<counter<<"\n";
-        oFile<<"draw braceColumnCombination.c"<<braceCounter<<counter<<"\n";
-        oFile<<"oed / braceColumnCombination.c"<<braceCounter<<counter<<"/columnPart/"<<"\n";
+	oFile<<"\ncp braceColumnCombination.c braceColumnCombination.c"<<i<<"\n";
+        oFile<<"draw braceColumnCombination.c"<<i<<"\n";
+        oFile<<"oed / braceColumnCombination.c"<<i<<"/columnPart/"<<"\n";
        	oFile<<"rot 0 0 "<<rotationAngle<<"\n";
         oFile<<"translate "<<setprecision(3)<<xCord<<" "<<setprecision(3)<<yCord<<" "<<columnPosition<<"\n";
         oFile<<"accept\n";
 	/**
 	 * saving names of objects in an array 
 	 */
-	concatenator<<"braceColumnCombination.c"<<i;
-	objectName[nameCounter] = concatenator.str();
-	concatenator.str(std :: string());
-	nameCounter++;
+	objectNameCollector("braceColumnCombination.c",i);
 	i++;
 
 	rotationAngle = rotationAngle + angleStepDeg;
@@ -548,18 +536,23 @@ while (braceCounter < braceNumber) {
 	oFile<<" "<<ringDepth<<" "<<innerRingRadius<<"\n";
 
 	/** subtracting innerRingX from outerRingX to create final ring */
-	oFile<<"c ring"<<id<<".c outerRing"<<id<<" - "<<"innerRing"<<id<<"\n";
-		
+	oFile<<"c ring"<<id<<" outerRing"<<id<<" - "<<"innerRing"<<id<<"\n";
+	
+	if (id != 5 & id != 6) {
+	    objectNameCollector("ring", id);
+	}
 	/** removing the inner edge of foundationProjectionInner */
 	if (id == 5)
 	{
-	oFile<<"c foundationInner"<<id<<".c ring"<<id<<".c - cornerRemover"<<id<<"\n";
+	oFile<<"c foundationInner"<<id<<" ring"<<id<<" - cornerRemover"<<id<<"\n";
+	objectNameCollector("foundationInner", id);
 	}
 
 	/** removing the outer edge of foundationProjectionOuter */
 	if (id == 6)
 	{
-	oFile<<"c foundationOuter"<<id<<".c ring"<<id<<".c + cornerRemover"<<id<<"\n";
+	oFile<<"c foundationOuter"<<id<<" ring"<<id<<" + cornerRemover"<<id<<"\n";
+	objectNameCollector("foundationOuter", id);
 	}
 
 	
@@ -607,6 +600,7 @@ void waterTank :: domeGenerator() {
 	oFile<<"oed / topDome1.c/topDome.c/topOuterDome"<<"\n";
 	oFile<<"translate 0 0 "<<topDomePosition<<"\n";
 	oFile<<"accept"<<"\n";
+
 	
 	/** bottom Dome */
 //	sphere(bottomInnerDome, bottomDomeInnerRadius);
@@ -629,8 +623,7 @@ void waterTank :: domeGenerator() {
 	oFile<<"oed / bottomDome1.c/bottomDome.c/bottomOuterDome"<<"\n";
 	oFile<<"translate 0 0 "<<bottomDomePosition<<"\n";
 	oFile<<"accept"<<"\n";
-
-oFile.close();
+	oFile.close();
 	}
 
 void waterTank :: conicalDomeGenerator() {
@@ -657,7 +650,7 @@ void waterTank :: cylinderGenerator() {
 
 	for (k = 0; k < columnTypes; k++) {	
 	    oFile<<"in "<<masterColumn[k]<<" rcc 0 0 0 0 0 "<<setprecision(3)<<columnHeight[k]<<" "<<columnDiameter[k]/2<<"\n";
-	    cout<<"height: "<<columnHeight[k]<<" column: "<<columnDiameter[k]<<endl;
+//	    cout<<"height: "<<columnHeight[k]<<" column: "<<columnDiameter[k]<<endl;
 	    }
 	oFile.close();
         }
@@ -819,28 +812,29 @@ oFile<<"accept"<<"\n";
 
 /** 
  * vector writer: common function 
- * that is begin called by other functions
- * to write content in vector, increment 
- * the cmdCounter and clear the "object"
- * named stringstream variable. */
-void waterTank :: vectorWriter() {
-mgedCmd.push_back(object.str());
-cmdCounter++;
-object.str(std::string());
+ * that is being called by other functions
+ * to write content in a vector, increment 
+ * the cmdCounter and clear the contents of variable "object"
+ * having type stringstream */
+void waterTank :: vectorWriter() 
+{
+    mgedCmd.push_back(object.str());
+    cmdCounter++;
+    object.str(std::string());
 }
 
 /** function to write into file */
-void waterTank :: fileWriter(int cmdCounter) {
-int fileCounter;
-cout<<"fileWriter: "<<cmdCounter<<endl;
-oFile.open("columnPlacer.sh", ios::out | ios::app);
-for (fileCounter = 0; fileCounter < cmdCounter; fileCounter++)
+void waterTank :: fileWriter(int cmdCounter)
 {
-oFile<<mgedCmd[fileCounter];
-//cout<<fileCounter<<" --> "<<mgedCmd[fileCounter]<<endl;
-}
-cmdCounter = 0;
-oFile.close();
+    int fileCounter;
+    cout<<"fileWriter: "<<cmdCounter<<endl;
+    oFile.open("columnPlacer.sh", ios::out | ios::app);
+    for (fileCounter = 0; fileCounter < cmdCounter; fileCounter++) {
+        oFile<<mgedCmd[fileCounter];
+ //       cout<<mgedCmd[fileCounter]<<" -- "<<fileCounter<<endl;
+    }
+    cmdCounter = 0;
+    oFile.close();
 }
 
 /** function for creating sphere using "in" command of mged */
@@ -880,3 +874,24 @@ void waterTank :: accept() {
 object<<"\n"<<"accept";
 vectorWriter();
 }
+
+void waterTank :: combination(){
+	int combinationCounter;
+	oFile.open("columnPlacer.sh", ios::out | ios::app);
+	oFile<<"r watertank.r";
+	for (combinationCounter = 0; combinationCounter < nameCounter;
+		combinationCounter++){ 
+			cout<<objectName[combinationCounter]<<" ";
+			oFile<<" u "<<objectName[combinationCounter];
+	}
+	oFile<<" u waterContainer.c u topDome1.c u bottomDome1.c"; 
+	oFile<<" u conicalDome.c\n";
+	oFile.close();
+}
+
+void waterTank :: objectNameCollector(string name, double suffix){
+	concatenator<<name<<suffix;
+	objectName[nameCounter] = concatenator.str();
+	concatenator.str(std :: string());
+	nameCounter++;
+	}

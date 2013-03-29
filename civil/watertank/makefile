@@ -1,8 +1,8 @@
-###############################################################################
-# This is makefile for watertank sub project under wBRLCAD project.           #
-#                                                                             #
-# Written By: Harmanpreet Singh                                               #
-###############################################################################
+#####################################################################
+# This is makefile for watertank sub project under wBRLCAD project. # 
+#                                                                   # 
+# Written By: Harmanpreet Singh                                     # 
+#####################################################################
 
 # main function file
 mainFunction = watertank.cpp
@@ -41,7 +41,7 @@ outputRedirectFlag = -o
 # defining targets and sources.
 
 # calling the targets specified in the list below.
-all: $(main) execute
+all: execute
 
 # compiling file containing definitions
 $(definitionsObj): $(definitions) $(declarations)
@@ -56,10 +56,12 @@ $(main): $(definitionsObj) $(mainFunctionObj)
 	$(compiler) $(outputRedirectFlag) $(main) $(definitionsObj) \
 	$(mainFunctionObj)
 
-execute: 
+execute: $(main)
+	rm columns.g	
 	./$(main) < $(inputFile)
 	sh columnPlacer.sh
-	mged columns.g
+#	mged columns.g
+
 clean: 
 	rm *.o *.g *.sh $(main)
 

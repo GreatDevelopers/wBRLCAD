@@ -21,6 +21,7 @@ int main()
 	rcc.domeGenerator();
 	rcc.conicalDomeGenerator();
 	rcc.waterTankCrossSection();
+	rcc.combination();
 	oFile.open("columnPlacer.sh", ios::out | ios::app);
 	oFile<<"EOF\n";
 	oFile.close();
