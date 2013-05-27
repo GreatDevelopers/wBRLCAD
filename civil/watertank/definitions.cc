@@ -434,7 +434,7 @@ while (braceCounter < braceNumber) {
 	
 	/** calculating the length of brace using the concept of distance between two coordinate points */
 	braceLength = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-	cout<<endl<<braceLength<<endl;
+//	cout<<endl<<braceLength<<endl;
 	return braceLength;
 	}
 
@@ -646,7 +646,7 @@ void waterTank :: cylinderGenerator() {
 	
         oFile.open("columnPlacer.sh", ios::out | ios::app);
 	oFile<<"#!/bin/bash\n";
-        oFile<<"cat <<EOF | mged -c "<<databaseName<<"\n";
+        oFile<<"cat <<EOF | env /usr/brlcad/bin/mged -c "<<databaseName<<"\n";
 
 	for (k = 0; k < columnTypes; k++) {	
 	    oFile<<"in "<<masterColumn[k]<<" rcc 0 0 0 0 0 "<<setprecision(3)<<columnHeight[k]<<" "<<columnDiameter[k]/2<<"\n";
@@ -801,7 +801,7 @@ void waterTank :: stirrupCopier(double stirrupDistance) {
 	 */
         cout.setf(ios :: fixed);
         oFile.setf(ios :: fixed);
-cout<<"stirrup Copier"<<endl;
+//cout<<"stirrup Copier"<<endl;
 oFile<<"cp stirrup stirrup"<<stirrupSuffix<<"\n";
 oFile<<"draw stirrup"<<stirrupSuffix<<"\n";
 oFile<<"sed stirrup"<<stirrupSuffix<<"\n";
@@ -827,7 +827,7 @@ void waterTank :: vectorWriter()
 void waterTank :: fileWriter(int cmdCounter)
 {
     int fileCounter;
-    cout<<"fileWriter: "<<cmdCounter<<endl;
+ //   cout<<"fileWriter: "<<cmdCounter<<endl;
     oFile.open("columnPlacer.sh", ios::out | ios::app);
     for (fileCounter = 0; fileCounter < cmdCounter; fileCounter++) {
         oFile<<mgedCmd[fileCounter];
@@ -881,7 +881,7 @@ void waterTank :: combination(){
 	oFile<<"r watertank.r";
 	for (combinationCounter = 0; combinationCounter < nameCounter;
 		combinationCounter++){ 
-			cout<<objectName[combinationCounter]<<" ";
+		//	cout<<objectName[combinationCounter]<<" ";
 			oFile<<" u "<<objectName[combinationCounter];
 	}
 	oFile<<" u waterContainer.c u topDome1.c u bottomDome1.c"; 

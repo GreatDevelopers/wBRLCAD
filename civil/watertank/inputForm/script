@@ -35,4 +35,6 @@ else
 	 </ol>
 	 Inconvenience regretted."	 
 fi
-
+./watertank < inputForm/values
+sh columnPlacer.sh
+./render.sh

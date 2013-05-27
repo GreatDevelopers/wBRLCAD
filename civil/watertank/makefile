@@ -56,12 +56,12 @@ $(main): $(definitionsObj) $(mainFunctionObj)
 	$(compiler) $(outputRedirectFlag) $(main) $(definitionsObj) \
 	$(mainFunctionObj)
 
-execute: $(main)
-	rm columns.g	
+execute: $(main)	
 	./$(main) < $(inputFile)
-	sh columnPlacer.sh
-#	mged columns.g
-
+	sh columnPlacer.sh > /dev/null 2>&1
+	./render.sh > /dev/null 2>&1
+	shotwell wtrt.png 
+	@echo "$(Please wait while we process the inputs...)"
 clean: 
-	rm *.o *.g *.sh $(main)
+	rm *.o *.g columnPlacer.sh wtrt* $(main)
 

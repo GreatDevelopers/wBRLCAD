@@ -1,0 +1,77 @@
+BRL-CAD Release 7.22.0  The BRL-CAD Raytracer RT
+    Tue, 26 Jun 2012 07:56:54 +0200, Compilation 0
+    jordi@jordi-desktop:/usr/brlcad
+BRL-CAD Release 7.22.0  The BRL-CAD Ray-Tracing Library
+    Tue, 26 Jun 2012 07:56:54 +0200, Compilation 0
+    jordi@jordi-desktop:/usr/brlcad
+BRL-CAD Release 7.22.0  The BRL-CAD Numerical Computation Library
+    Tue, 26 Jun 2012 07:56:54 +0200, Compilation 0
+    jordi@jordi-desktop:/usr/brlcad
+BRL-CAD Release 7.22.0  The BRL-CAD Utility Library
+    Tue, 26 Jun 2012 07:56:54 +0200, Compilation 0
+    jordi@jordi-desktop:/usr/brlcad
+
+Running on batman
+Planning to run with 2 processors
+rt -M -o foundationCut.pix -s1024 -k 0,-5,0,2000
+opendb /home/harmanpreet/public_html/cgi-bin/wBRLCAD/civil/watertank/columns.g;
+tree watertank.r;
+db title:  Untitled BRL-CAD Database
+DIRBUILD: cpu = 0.004001 sec, elapsed = 0.000607 sec
+    parent: 0.0user 0.0sys 0:00real 0% 0i+0d 2370maxrss 0+155pf 0+0csw
+  children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional mem=151552., #malloc=506, #free=431, #realloc=5 (75 retained)
+08803a78 TOL 5.000000e-04 (sq=2.500000e-07) perp=1.000000e-06, para=9.999990e-01
+BRL-CAD Release 7.22.0  The BRL-CAD Optical Shader Library
+    Tue, 26 Jun 2012 07:56:54 +0200, Compilation 0
+    jordi@jordi-desktop:/usr/brlcad
+Additional mem=540672., #malloc=2057, #free=5, #realloc=1 (2052 retained)
+Warning:  region unioned into region at '/watertank.r/foundationColumn0/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn0/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn1/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn1/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn2/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn2/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn3/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn3/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn4/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn4/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn5/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn5/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn6/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn6/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn7/stirrupSteelBarCombination.c/stirrup.r', lower region info ignored
+Warning:  region unioned into region at '/watertank.r/foundationColumn7/stirrupSteelBarCombination.c/steelBar.r', lower region info ignored
+GETTREE: cpu = 0.024001 sec, elapsed = 0.0252 sec
+    parent: 0.0user 0.0sys 0:00real 100% 0i+0d 3554maxrss 0+421pf 5+4csw
+  children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional mem=0., #malloc=55584, #free=44247, #realloc=100 (11337 retained)
+
+...................Frame     0...................
+PREP: cpu = 0.020001 sec, elapsed = 0.018396 sec
+    parent: 0.0user 0.0sys 0:00real 200% 0i+0d 3950maxrss 0+176pf 0+3csw
+  children: 0.0user 0.0sys 0:00real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional mem=675840., #malloc=5473, #free=2705, #realloc=4 (2768 retained)
+NUBSP: 0 nu, 2669 cut, 2670 box (2670 empty)
+Tree: 1874 solids in 1 regions
+Model: X(-12850, 12850), Y(-12850, 12850), Z(-4, 38300)
+View: 35 azimuth, 25 elevation off of front view
+Orientation: 0.248097, 0.476591, 0.748097, 0.389435
+Eye_pos: 103107, 68762.1, 58146.6
+Size: 8087.5mm
+Grid: (7.89795, 7.89795) mm, (1024, 1024) pixels
+Beam: radius=3.94897 mm, divergence=0 mm/1mm
+Output file is 'foundationCut.pix' 1024x1024 pixels
+Low overhead scanline-per-CPU buffering
+
+SHOT: cpu = 170.987 sec, elapsed = 93.7285 sec
+    parent: 170.9user 0.1sys 1:33real 182% 0i+0d 5564maxrss 0+1577pf 5+37939csw
+  children: 0.0user 0.0sys 1:33real 0% 0i+0d 0maxrss 0+0pf 0+0csw
+Additional mem=0., #malloc=1154, #free=1077, #realloc=3 (77 retained)
+8420703 solid/ray intersections: 5198576 hits + 3222127 miss
+pruned 61.7%:  0 model RPP, 21152008 dups skipped, 6499135 solid RPP
+Frame  0:    1048576 pixels in     85.49 sec =     12265.00 pixels/sec
+Frame  0:    1048576 rays   in     85.49 sec =     12265.00 rays/sec (RTFM)
+Frame  0:    1048576 rays   in    170.99 sec =      6132.50 rays/CPU_sec
+Frame  0:    1048576 rays   in     93.73 sec =     11187.37 rays/sec (wallclock)
+

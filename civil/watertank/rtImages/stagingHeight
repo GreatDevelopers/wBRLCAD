@@ -1,0 +1,15 @@
+#!/bin/sh
+rt -M \
+ -o stagingHeight.pix\
+ $*\
+ '/home/harmanpreet/public_html/cgi-bin/wBRLCAD/civil/watertank/columns.g'\
+ 'watertank.r' \
+ 2>> stagingHeight.log\
+ <<EOF
+viewsize 3.40806584362140e+04;
+orientation 5.00000000000000e-01 5.00000000000000e-01 5.00000000000000e-01 5.00000000000000e-01;
+eye_pt 1.17346310035191e+05 -2.07408898300002e+03 1.38538283600001e+04;
+start 0; clean;
+end;
+
+EOF
