@@ -28,8 +28,8 @@ chmod 777 columnPlacer.sh
 ./render.sh
 echo "<center>
 	<table>
-	<tr><td><img src='../../../../cgi-images/wtrt.png'></td>
-	<td><img src='../../../../cgi-images/wtrt_front.png'></td></tr>
-	<tr><td><img src='../../../../cgi-images/wtrt_top.png'></td></tr>
+	<tr><td><img src='wtrt.png'></td>
+	<td><img src='wtrt_front.png'></td></tr>
+	<tr><td><img src='wtrt_top.png'></td></tr>
 	</table>
 	</center>"
