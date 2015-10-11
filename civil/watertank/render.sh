@@ -44,7 +44,7 @@ cp $iso.png ../../../../cgi-images
 cp $front.png ../../../../cgi-images
 cp $top.png ../../../../cgi-images
 
-
+rm ../../../../cgi-images
 #pix-png < wtrt.pix > wtrt.png
 #png-fb wtrt.png                                     
 #shotwell wtrt.png
